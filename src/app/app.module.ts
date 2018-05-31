@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { RouterModule } from '@angular/router';
 
 const MATERIAL_MODULES = [
   MatToolbarModule
@@ -25,7 +26,8 @@ const MATERIAL_MODULES = [
     BrowserAnimationsModule,
     HttpClientModule,
     ...MATERIAL_MODULES,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
