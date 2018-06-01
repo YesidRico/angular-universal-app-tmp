@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Post } from '../../../shared/models/post/post';
+import { PostService } from '../../../shared/services/post/post.service';
+import { END_POINT } from '../../../shared/constants/service.contants';
 
 @Component({
   selector: 'my-dashboard',
@@ -6,10 +10,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./my-dashboard.component.css']
 })
 export class MyDashboardComponent {
-  cards = [
-    { title: 'Card 1', cols: 2, rows: 1 },
-    { title: 'Card 2', cols: 1, rows: 1 },
-    { title: 'Card 3', cols: 1, rows: 2 },
-    { title: 'Card 4', cols: 1, rows: 1 }
-  ];
+  
+  posts$: Observable<Post[]> = this._postService.getAll(END_POINT.getAll.post);
+
+  constructor(private _postService: PostService) { }
+
+  ngOnInit() { }
 }
